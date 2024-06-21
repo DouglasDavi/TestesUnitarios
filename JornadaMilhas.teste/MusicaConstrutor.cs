@@ -53,10 +53,38 @@ namespace JornadaMilhas.teste
             Assert.Equal(toStringEsperado, resultado);
 
         }
+        [Fact]
+        public void RetornaAnoDeLancamentoNuloQuandoValorEhMenorQueZero()
+        {
+            // Arrange
+            int anoInvalido = -1;
+            Musica musica = new Musica("Nome");
 
+            // Act
+            musica.AnoLancamento = anoInvalido;
+
+            // Assert
+            Assert.Null(musica.AnoLancamento);
+        }
+
+        [Fact]
+        public void TestandoArtistaNullOuVazio()
+        {
+            // Arrange
+            int id = 1;
+            string nome = "Música Teste";
+            Musica musica = new Musica(nome) { Id = id, Artista = "" };
+
+            // Act
+            string resultado = "artista desconhecido";
+
+            // Assert
+            Assert.Equal(resultado, musica.Artista);
+
+        }
         //Outro modelo teste
         [Fact]
-        public void Jogo_CriacaoComTituloNulo_DeveLancarArgumentNullException()
+        public void JogoCriacaoComTituloNulo_DeveLancarArgumentNullException()
         {
             // Arrange
             string tituloNulo = null;
@@ -69,5 +97,6 @@ namespace JornadaMilhas.teste
 
             Assert.Contains("O título não pode ser nulo ou vazio.", exception.Message);
         }
+
     }
 }

@@ -10,3 +10,8 @@ O caso de teste é uma parte fundamental do processo de teste de software e é e
 * Passos de execução - uma lista detalhada das etapas que devem ser seguidas para executar o caso de teste;
 * Resultados esperados - os resultados específicos que são esperados após a execução bem-sucedida do caso de teste;
 * Critérios de aceitação - critérios claros que determinam se o caso de teste foi aprovado ou reprovado.
+
+* [TestFixture] - uma classe que contém um conjunto de testes de unidade relacionados;
+* [Test] - utilizada para identificar testes distintos dentro de uma mesma classe de teste;
+* [Ignore] - utilizada para ignorar um teste específico durante a execução;
+* [Collection] - utilizada para agrupar testes em coleções específicas.

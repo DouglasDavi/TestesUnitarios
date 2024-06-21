@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace JornadaMilhas.Modelos
 {
     public class Musica
     {
+        private int? anoLancamento;
+        private string artista;
+
         public Musica(string nome)
         {
             Nome = nome;
@@ -15,7 +19,23 @@ namespace JornadaMilhas.Modelos
 
         public string Nome { get; set; }
         public int Id { get; set; }
-        public string Artista { get; set; }
+
+        public int? AnoLancamento
+        {
+            get => anoLancamento;
+            set
+            {
+                if (value <= 0) 
+                {
+                    anoLancamento = null;
+                }
+                else
+                {
+                    anoLancamento = value;
+                }
+            }
+        }
+        public string Artista { get => artista; set { if (value.IsNullOrEmpty()) { artista = "artista desconhecido"; } else { artista = value; } } }
 
         public void ExibirFichaTecnica()
         {

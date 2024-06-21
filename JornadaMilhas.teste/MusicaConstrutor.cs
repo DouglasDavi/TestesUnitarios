@@ -1,22 +1,14 @@
-using JornadaMilhas.Modelos;
-using JornadaMilhasV1.Modelos;
+﻿using JornadaMilhas.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JornadaMilhas.teste
 {
-    public class UnitTest1
+    public class MusicaConstrutor
     {
-        [Fact]
-        public void TestandoOfertaComRotaNula()
-        {
-            Rota rota = null;
-            Periodo periodo = new Periodo(new DateTime(2024, 2, 1), new DateTime(2024, 2, 5));
-            double preco = 100.0;
-
-            OfertaViagem oferta = new OfertaViagem(rota, periodo, preco);
-
-            Assert.Contains("A oferta de viagem não possui rota ou período válidos.", oferta.Erros.Sumario);
-
-        }
         [Fact]
         public void TestandoIniciaNomeMusica()
         {
@@ -38,8 +30,8 @@ namespace JornadaMilhas.teste
             int id = 1;
 
             // Act
-            Musica musica = new Musica(nome){Id = id, Artista = "KevinOChris"};
-            
+            Musica musica = new Musica(nome) { Id = id, Artista = "KevinOChris" };
+
             // Assert
             Assert.Equal(id, musica.Id);
 
@@ -60,6 +52,22 @@ namespace JornadaMilhas.teste
             // Assert
             Assert.Equal(toStringEsperado, resultado);
 
+        }
+
+        //Outro modelo teste
+        [Fact]
+        public void Jogo_CriacaoComTituloNulo_DeveLancarArgumentNullException()
+        {
+            // Arrange
+            string tituloNulo = null;
+            string capa = "CapaTeste";
+
+            // Act & Assert
+            var exception = Assert.Throws<ArgumentNullException>(() => new Jogo(tituloNulo, capa));
+            Console.WriteLine(exception.Message);
+            Assert.Equal("titulo", exception.ParamName);
+
+            Assert.Contains("O título não pode ser nulo ou vazio.", exception.Message);
         }
     }
 }

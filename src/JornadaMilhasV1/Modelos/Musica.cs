@@ -28,5 +28,42 @@ namespace JornadaMilhas.Modelos
             return @$"Id: {Id} Nome: {Nome}";
         }
     }
-      
+
+    public class Jogo 
+    {
+        public string Titulo { get; }
+        public string Capa { get; }
+        public string Descricao { get; set; }
+        public double Preco { get; set; }
+        public int Id { get; set; }
+
+        private readonly List<int> listaNotas = new List<int>();
+
+        public double Media => listaNotas.Count > 0 ? listaNotas.Average() : 0;
+
+        public Jogo(string titulo, string capa)
+        {
+            if (string.IsNullOrWhiteSpace(titulo))
+            {
+                throw new ArgumentNullException(nameof(titulo), "O título não pode ser nulo ou vazio.");
+            }
+
+            Titulo = titulo;
+            Capa = capa;
+        }
+
+        public Jogo(string titulo, string capa, double preco, string descricao, int id = 0)
+            : this(titulo, capa)
+        {
+            Preco = preco;
+            Descricao = descricao;
+            Id = id;
+        }
+
+        public void Recomendar(int nota)
+        {
+            listaNotas.Add(nota);
+        }
+    }
+
 }

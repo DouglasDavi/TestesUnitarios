@@ -35,7 +35,7 @@ namespace JornadaMilhas.Modelos
                 }
             }
         }
-        public string Artista { get => artista; set { if (value.IsNullOrEmpty()) { artista = "artista desconhecido"; } else { artista = value; } } }
+        public string Artista { get => artista; set { if (value.IsNullOrEmpty()) { artista = "Artista desconhecido"; } else { artista = value; } } }
 
         public void ExibirFichaTecnica()
         {
